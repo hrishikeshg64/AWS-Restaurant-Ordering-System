@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RG Restaurant | Gourmet Dining</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #ff4757;
+            --secondary-color: #2f3542;
+            --glass: rgba(255, 255, 255, 0.15);
+            --accent: #ffa502;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Using a high-quality food background image */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 20px;
+        }
+
+        .main-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 50px 40px;
+            width: 100%;
+            max-width: 450px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            text-align: center;
+            color: white;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .brand-logo {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 35px;
+            box-shadow: 0 0 20px rgba(255, 71, 87, 0.4);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        p.subtitle {
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            opacity: 0.8;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-size: 12px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 12px;
+            outline: none;
+            font-size: 15px;
+            color: #333;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus {
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            margin-top: 20px;
+            background: var(--primary-color);
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            background: #ff6b81;
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(255, 71, 87, 0.3);
+        }
+
+        .footer {
+            margin-top: 25px;
+            font-size: 11px;
+            opacity: 0.6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Food Preview Thumbnails */
+        .food-previews {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .food-previews img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-card">
+    <div class="brand-logo">🍳</div>
+    <h1>RG Restaurant</h1>
+    <p class="subtitle">Experience Culinary Excellence</p>
+
+    <div class="food-previews">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=100" alt="Pizza">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=100" alt="Burger">
+        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=100" alt="Biryani">
+    </div>
+
+    <form action="/order" method="post">
+        <div class="input-group">
+            <label>FULL NAME</label>
+            <input type="text" name="name" placeholder="Enter your name" required>
+        </div>
+
+        <div class="input-group">
+            <label>EMAIL ADDRESS</label>
+            <input type="email" name="email" placeholder="example@mail.com" required>
+        </div>
+
+        <div class="input-group">
+            <label>SELECT CUISINE</label>
+            <select name="food">
+                <option value="pizza">🍕 Artisanal Pizza</option>
+                <option value="burger">🍔 Signature Burger</option>
+                <option value="biryani">🍗 Royal Biryani</option>
+                <option value="pasta">🍝 Creamy Pasta</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>QUANTITY</label>
+            <input type="number" name="quantity" min="1" value="1" required>
+        </div>
+
+        <button type="submit">Complete Order</button>
+    </form>
+
+    <div class="footer">
+        <span>EST. 2024</span>
+        <span>•</span>
+        <span>Powered by AWS Cloud ☁️</span>
+    </div>
+</div>
+
+</body>
+</html>
