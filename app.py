@@ -12,10 +12,10 @@ def get_db_connection():
     try:
         return pymysql.connect(
             # Using your specific RDS Endpoint
-            host="restaurant.c3ygs4yyagvc.us-west-2.rds.amazonaws.com",
+            host="your-rds-endpoint",
             user="admin",
-            password="Pass2026", 
-            database="restaurant",
+            password="your-password", 
+            database="your database-name",
             port=3306,
             cursorclass=pymysql.cursors.DictCursor,
             connect_timeout=10
@@ -33,7 +33,7 @@ sns = boto3.client(
     region_name="us-west-2"
 )
 
-TOPIC_ARN = "arn:aws:sns:us-west-2:542478884662:restaurant-alert"
+TOPIC_ARN = "arn-from-SNS"
 
 
 # ===============================
