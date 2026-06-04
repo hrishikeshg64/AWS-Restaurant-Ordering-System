@@ -1,26 +1,35 @@
-Detailed Version (for GitHub README)
+# Cloud-Based Three-Tier Restaurant Ordering System
 
-📌 Project Workflow / Architecture Steps
+A secure, scalable, and event-driven restaurant ordering application deployed on AWS. This project leverages a classic three-tier architecture to separate presentation, business logic, and data storage, integrated with an automated cloud notification system.
 
-1. Frontend Layer (Presentation Tier)
-   Hosted the web application on EC2
-   Users can browse menu and place orders via browser
-2. Application Layer (Backend)
-   Built using Flask (Python)
-   Handles incoming requests and order processing logic
-   Connects to database and SNS service
-3. Database Layer
-   Used Amazon RDS (MySQL)
-   Stores customer order details securely
-4. Notification System (Event-Driven)
-   Integrated Amazon SNS
-   Sends email notifications instantly when an order is placed
-5. Security Implementation
-   Configured IAM Role for EC2 instance
-   Granted permission to access SNS
-   Avoided hardcoding AWS credentials (best practice 🔐)
-6. Deployment Steps
-   Launched EC2 instance and hosted Flask app
-   Set up RDS instance and connected it with backend
-   Configured SNS topic and email subscription
-   Attached IAM Role to EC2 for secure service access
+---
+
+## 🛠️ Tech Stack & Services
+
+* **Frontend & Backend:** Python, Flask, HTML5/CSS3
+* **Compute:** Amazon EC2
+* **Database:** Amazon RDS (MySQL)
+* **Messaging/Alerts:** Amazon SNS (Simple Notification Service)
+* **Security:** AWS IAM (Identity and Access Management), Security Groups
+
+---
+
+## 🚀 Deployment Steps
+
+### 1. Database Provisioning
+* Launch an Amazon RDS (MySQL) instance inside your private or public subnets.
+* Configure the database security group to allow inbound traffic on port `3306` **only** from your EC2 instance's security group.
+
+### 2. Notification Pipeline Setup
+* Create an Amazon SNS Standard Topic (e.g., `Order_Notifications`).
+* Create an Email Subscription under the topic, inputting the target email address.
+* Confirm the subscription by clicking the activation link sent to that inbox.
+
+### 3. Identity and Access Management (IAM)
+* Create an IAM Role with an attached policy allowing `sns:Publish` permissions.
+* Attach this IAM Role to your EC2 instance profile to grant programmatic access via the AWS SDK (`boto3`).
+
+### 4. Application Configuration & Host
+* Launch your EC2 instance and clone the codebase.
+* Update your Flask configuration with the RDS Database Endpoint and the SNS Topic ARN.
+* Install project dependencies, initialize the database schema, and run the Flask application.
